@@ -7,7 +7,8 @@ namespace Motif;
 /// </summary>
 public sealed class Expected : Exception
 {
-    internal Expected(string failure) : base(failure)
+    internal Expected(string subject, string expectation, string found)
+        : base($"`{subject}` {expectation}\nbut {found}.")
     {
     }
 }

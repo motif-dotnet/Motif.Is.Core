@@ -14,7 +14,6 @@ public static class ValueClaims
         [CallerArgumentExpression(nameof(value))] string subject = "")
     {
         if (!Equals(value, other))
-            throw new Expected(
-                $"`{subject}` to be {other}\nbut it's {value}.");
+            throw new Expected(subject, $"to be {other}", $"it's {value}");
     }
 }

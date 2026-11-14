@@ -40,7 +40,6 @@ public sealed class Code
         }
 
         throw new Expected(
-            $"`{subject}` to throw {typeof(TException).Name}\n" +
-            "but it threw nothing.");
+            subject, $"to throw {typeof(TException).Name}", "it threw nothing");
     }
 }
