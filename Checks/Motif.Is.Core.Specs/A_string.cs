@@ -3,7 +3,7 @@ namespace A_string;
 public sealed class in_a_failure
 {
     [Fact]
-    public void reads_whole()
+    public void reads_as_itself_not_as_its_characters()
     {
         var word = "tea";
 
