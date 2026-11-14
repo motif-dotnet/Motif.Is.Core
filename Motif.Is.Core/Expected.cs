@@ -7,7 +7,17 @@ namespace Motif;
 public sealed class Expected : Exception
 {
     internal Expected(string subject, string expectation, string found)
-        : base($"`{subject}` {expectation}\nbut {found}.")
+        : base(Sentence(subject, expectation, found))
     {
     }
+
+    internal Expected(
+        string subject, string expectation, string found, Exception thrown)
+        : base(Sentence(subject, expectation, found), thrown)
+    {
+    }
+
+    private static string Sentence(
+        string subject, string expectation, string found) =>
+        $"`{subject}` {expectation}\nbut {found}.";
 }

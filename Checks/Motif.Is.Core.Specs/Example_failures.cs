@@ -33,4 +33,10 @@ public sealed class Throws
 
         Check.That(() => count++).Throws<OverflowException>();
     }
+
+    [Fact]
+    public void when_something_else_is_thrown()
+    {
+        Check.That(() => int.Parse("abc")).Throws<ArgumentException>();
+    }
 }
