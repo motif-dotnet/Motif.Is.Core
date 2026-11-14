@@ -31,3 +31,39 @@ public sealed class with_a_lambda_inside
                 "but it didn't throw at all.");
     }
 }
+
+public sealed class that_throws_something_else
+{
+    [Fact]
+    public void throws_Expected_saying_what()
+    {
+        var parsing = Check.That(() => int.Parse("abc"));
+
+        Check.That(() => parsing.Throws<ArgumentException>())
+            .Throws<Expected>()
+            .Message.Is(
+                "`int.Parse(\"abc\")` to throw ArgumentException\n" +
+                "but it threw FormatException.");
+    }
+
+    [Fact]
+    public void keeps_what_it_threw_as_the_inner_exception()
+    {
+        var thrown = new FormatException();
+        var parsing = Check.That(() => throw thrown);
+
+        Check.That(() => parsing.Throws<ArgumentException>())
+            .Throws<Expected>()
+            .InnerException.Is(thrown);
+    }
+}
+
+public sealed class a_base_type
+{
+    [Fact]
+    public void holds_when_it_throws_a_subtype()
+    {
+        Check.That(() => throw new ArgumentNullException())
+            .Throws<ArgumentException>();
+    }
+}
