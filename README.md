@@ -26,7 +26,7 @@ Motif.Is builds its other claims on the core in that way. Specs say `using Motif
 
 ## Status
 
-**Trial, and not built yet.** The design is agreed in [decisions.md](decisions.md); the code comes in small slices, specs first. Not on NuGet: early releases go to Motif's own repos through a local feed, and nuget.org comes once the API has stood up to real use.
+**Trial, not yet in use.** The first slice is in: `Is` for single things and for sequences, and `Throws`, with failures that read as sentences. No release has gone to a Motif repo's feed yet, and Motif.Is isn't built on it yet. Not on NuGet: early releases go to Motif's own repos through a local feed, and nuget.org comes once the API has stood up to real use.
 
 The project's terms are in [motif/glossary.md](motif/glossary.md).
 
