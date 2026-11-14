@@ -1,21 +1,25 @@
-namespace Deliberately_failing;
+namespace Example_failures;
 
-// Every spec here fails on purpose, to show what failures look like in a
+// Every spec here fails on purpose, to show what its failure looks like in a
 // test runner. CI leaves them out: dotnet test --filter "Kind!=FailureGallery"
 
 [Trait("Kind", "FailureGallery")]
-public sealed class claims
+public sealed class Is
 {
     [Fact]
-    public void Is()
+    public void when_false()
     {
         var count = 3;
 
         count.Is(4);
     }
+}
 
+[Trait("Kind", "FailureGallery")]
+public sealed class Throws
+{
     [Fact]
-    public void Throws_when_nothing_is_thrown()
+    public void when_nothing_is_thrown()
     {
         var count = 3;
 
