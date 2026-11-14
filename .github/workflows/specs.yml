@@ -23,4 +23,36 @@ jobs:
           long=$(git ls-files '*.cs' | xargs awk 'length > 100 { print FILENAME ":" FNR }')
           if [ -n "$long" ]; then echo "$long"; exit 1; fi
       - name: Specs
-        run: dotnet test Motif.Is.Core.slnx -c Release --filter "Kind!=FailureGallery"
+        run: >
+          dotnet test Motif.Is.Core.slnx -c Release --filter "Kind!=FailureGallery"
+          --logger "trx;LogFileName=specs.trx" --results-directory results
+      # How many specs there are and how long they take, on the run's page, to
+      # keep an eye on as they grow.
+      - name: Summary
+        if: always()
+        shell: pwsh
+        run: |
+          $run = ([xml](Get-Content results/specs.trx)).TestRun
+          $counts = $run.ResultSummary.Counters
+          $ms = { param($time) [int]([timespan]$time).TotalMilliseconds }
+          $specs = $run.Results.UnitTestResult
+          $total = ($specs | ForEach-Object { & $ms $_.duration } |
+            Measure-Object -Sum).Sum
+          $whole = & $ms ([datetime]$run.Times.finish - [datetime]$run.Times.start)
+          $slowest = $specs |
+            Sort-Object { [timespan]$_.duration } -Descending |
+            Select-Object -First 5
+          $lines = @(
+            '### Specs'
+            ''
+            "$($counts.passed) passed, $($counts.failed) failed, " +
+              "$($counts.notExecuted) skipped."
+            "The specs took $total ms between them, in a run of $whole ms."
+            ''
+            '| Slowest | Time |'
+            '|---|---|'
+          )
+          $lines += $slowest | ForEach-Object {
+            "| ``$($_.testName)`` | $(& $ms $_.duration) ms |"
+          }
+          $lines | Out-File $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
