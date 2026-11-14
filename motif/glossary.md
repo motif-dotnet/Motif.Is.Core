@@ -97,6 +97,14 @@ Said of the core's own specs: they're written in the core, apart from the bootst
 - **Status:** proposed
 - **See also:** [Bootstrap spec](#bootstrap-spec)
 
+## Sequence
+
+Anything with items, whatever its collection type, except a string. `Is` compares sequences item by item, and a failure shows them as their items: *but it's [3, 4]*.
+
+- **Kind:** domain concept
+- **Status:** proposed
+- **Avoid:** collection (it's the type, not the items), list (one collection type)
+
 ## Snippet
 
 A piece of code that a spec makes a claim about, given to `Check.That` as a lambda: `Check.That(() => order.Place())`.

@@ -18,6 +18,7 @@ public static class Claims
                 found: $"it's {Show(found)}");
     }
 
+    // Item by item, so a list is the same as an array with the same items.
     private static bool Same(object? found, object? claimed) =>
         found is IEnumerable foundItems && claimed is IEnumerable claimedItems
             ? SameItems(
