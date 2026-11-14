@@ -14,7 +14,7 @@ Motif.Expected : `order.Total` to be 11.25
 but it's 7.00.
 ```
 
-The core has two claims, `Is` and `Throws`, and one way to make your own, which they use too:
+The core has two claims, `Is` and `Throws`, and one way to make your own, which `Is` uses too:
 
 ```csharp
 public static void IsTrue(this bool found,
