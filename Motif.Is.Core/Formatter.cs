@@ -8,6 +8,8 @@ internal static class Formatter
     {
         null => "null",
         bool b => b ? "true" : "false",
+        string s => $"\"{s}\"",
+        char c => $"'{c}'",
         decimal d => d.ToString(CultureInfo.InvariantCulture),
         _ when Sequence.TryGetItems(item, out var items) =>
             $"[{string.Join(", ", items.Select(Show))}]",
