@@ -1,3 +1,5 @@
+using A_new_claim;
+
 namespace Example_failures;
 
 // Every spec here fails on purpose, to show what its failure looks like in a
@@ -38,5 +40,25 @@ public sealed class Throws
     public void when_something_else_is_thrown()
     {
         Check.That(() => int.Parse("abc")).Throws<ArgumentException>();
+    }
+}
+
+[Trait("Kind", "FailureGallery")]
+public sealed class New_claims
+{
+    [Fact]
+    public void when_false()
+    {
+        var count = 3;
+
+        count.IsEven();
+    }
+
+    [Fact]
+    public void when_found_is_their_own()
+    {
+        List<string> drinks = ["tea", "coffee"];
+
+        drinks.HasCount(3);
     }
 }
