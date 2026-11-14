@@ -45,3 +45,20 @@ public sealed class claimed_to_be_something_else
             .Message.Is("`word.Length` to be 4\nbut it's 3.");
     }
 }
+
+public sealed class over_several_lines
+{
+    [Fact]
+    public void reads_on_one_line()
+    {
+        string[] words = ["tea", "cup"];
+
+        Check.That(() => words
+                .Select(word => word.Length)
+                .Is([3, 4]))
+            .Throws<Expected>()
+            .Message.Is(
+                "`words.Select(word => word.Length)` to be [3, 4]\n" +
+                "but it's [3, 3].");
+    }
+}
