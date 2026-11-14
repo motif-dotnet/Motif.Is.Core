@@ -11,7 +11,8 @@ public sealed class that_does_not_throw
         Check.That(() => incrementing.Throws<OverflowException>())
             .Throws<Expected>()
             .Message.Is(
-                "`count++` to throw OverflowException\nbut it threw nothing.");
+                "`count++` to throw OverflowException\n" +
+                "but it didn't throw at all.");
     }
 }
 
@@ -27,6 +28,6 @@ public sealed class with_a_lambda_inside
             .Throws<Expected>()
             .Message.Is(
                 "`Task.Run(() => count++).Wait()` to throw OverflowException\n" +
-                "but it threw nothing.");
+                "but it didn't throw at all.");
     }
 }

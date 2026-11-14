@@ -58,7 +58,7 @@ The message of a false claim: the subject and its expectation, then what was fou
 
 ## Found
 
-What was there instead of what was claimed: the 3 when `count.Is(4)` is false. The failure says it after "but": *but it's 3*, *but it threw nothing*.
+What was there instead of what was claimed: the 3 when `count.Is(4)` is false. The failure says it after "but": *but it's 3*, *but it didn't throw at all*.
 
 - **Kind:** domain concept
 - **Status:** proposed

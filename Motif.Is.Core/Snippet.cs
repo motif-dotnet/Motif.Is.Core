@@ -25,6 +25,6 @@ public sealed class Snippet
         throw new Expected(
             subject,
             expectation: $"to throw {typeof(TException).Name}",
-            found: "it threw nothing");
+            found: "it didn't throw at all");
     }
 }
