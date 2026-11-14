@@ -42,7 +42,7 @@ public sealed class with_its_own_found
 public sealed class with_a_word_in_its_expectation
 {
     [Fact]
-    public void shows_it_in_quotes()
+    public void reads_in_quotes()
     {
         var drink = "milk";
 
@@ -57,7 +57,7 @@ public sealed class with_a_word_in_its_expectation
 public sealed class with_a_word_as_its_found
 {
     [Fact]
-    public void shows_it_in_quotes_not_as_a_phrase()
+    public void reads_in_quotes_not_as_a_phrase()
     {
         var drink = "milk";
 
@@ -70,7 +70,7 @@ public sealed class with_a_word_as_its_found
 public sealed class with_a_number_in_its_found
 {
     [Fact]
-    public void writes_it_the_same_in_any_culture()
+    public void reads_the_same_in_any_culture()
     {
         double[] ratios = [2, 3];
 
@@ -86,7 +86,7 @@ public sealed class with_a_number_in_its_found
 public sealed class with_a_type_in_its_expectation
 {
     [Fact]
-    public void shows_its_name()
+    public void reads_as_its_name()
     {
         object count = 3;
 
