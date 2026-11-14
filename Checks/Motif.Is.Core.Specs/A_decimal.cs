@@ -1,5 +1,3 @@
-using System.Globalization;
-
 namespace A_decimal;
 
 public sealed class in_a_failure
@@ -10,18 +8,10 @@ public sealed class in_a_failure
     public void reads_as_written_in_any_culture(string culture)
     {
         var total = -12.50m;
-        var current = CultureInfo.CurrentCulture;
-        CultureInfo.CurrentCulture = new CultureInfo(culture);
 
-        try
-        {
+        using (Culture.Set(culture))
             Check.That(() => total.Is(3.00m))
                 .Throws<Expected>()
                 .Message.Is("`total` to be 3.00\nbut it's -12.50.");
-        }
-        finally
-        {
-            CultureInfo.CurrentCulture = current;
-        }
     }
 }
