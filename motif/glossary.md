@@ -6,7 +6,7 @@ The format is described in the [Motif Glossary design note](https://github.com/m
 
 ## Bootstrap spec
 
-One of the few specs written with plain xUnit `Assert` rather than the core, marked `// BOOTSTRAP`. Together they prove that a false claim throws and that `Throws` catches, which every other spec relies on.
+One of the few specs written with AwesomeAssertions rather than the core, marked `// BOOTSTRAP`. Together they prove that a false claim throws and that `Throws` catches, which every other spec relies on.
 
 - **Kind:** domain concept
 - **Status:** proposed
