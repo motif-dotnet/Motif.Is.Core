@@ -98,6 +98,19 @@ public sealed class with_a_type_in_its_expectation
     }
 }
 
+public sealed class with_nothing_found
+{
+    [Fact]
+    public void reads_as_null()
+    {
+        int[] counts = [];
+
+        Check.That(() => counts.HasFirst(3))
+            .Throws<Expected>()
+            .Message.Is("`counts` to have first 3\nbut it's null.");
+    }
+}
+
 // Claims as someone building on the core would write them.
 internal static class NewClaims
 {
@@ -162,4 +175,17 @@ internal static class NewClaims
             found is T,
             $"to be of type {typeof(T)}",
             found: $"it's of type {found.GetType()}");
+
+    // Passing null as found, here and there, rather than a phrase.
+    public static void HasFirst(
+        this int[] items,
+        int first,
+        [CallerArgumentExpression(nameof(items))] string subject = "")
+    {
+        if (items.Length == 0)
+            Claim.That(subject, false, $"to have first {first}", found: null);
+        else
+            Claim.That(
+                subject, items[0] == first, $"to have first {first}", items[0]);
+    }
 }

@@ -9,9 +9,10 @@ namespace Motif.Is;
 /// finds.
 /// </summary>
 // No conversion from a plain string, unlike Expectation's: a string passed as
-// found is what was found, so it reads in quotes.
+// found is what was found, so it reads in quotes. A struct, so null passed as
+// found is what was found too.
 [InterpolatedStringHandler]
-public sealed class Found
+public readonly struct Found
 {
     private readonly StringBuilder text;
 
@@ -23,5 +24,5 @@ public sealed class Found
     public void AppendFormatted<T>(T item) =>
         text.Append(Formatter.Show(item));
 
-    public override string ToString() => text.ToString();
+    public override string ToString() => $"{text}";
 }
