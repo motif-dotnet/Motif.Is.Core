@@ -21,5 +21,6 @@ public sealed class Expected : Exception, IAssertionException
 
     private static string Sentence(
         string subject, string expectation, string found) =>
-        $"{Subject.InFailure(subject)} {expectation}\nbut {found}.";
+        $"{Subject.InFailure(subject)} {expectation}\nbut {found}" +
+        (found.EndsWith('.') ? "" : ".");
 }
