@@ -18,6 +18,7 @@ internal static class Formatter
         bool b => b ? "true" : "false",
         string s => $"\"{s}\"",
         char c => $"'{c}'",
+        Type t => t.Name,
         DateOnly d => Write(d, Date),
         TimeOnly t => Write(t, Time),
         DateTime d => Write(d, $"{Date} {Time}"),

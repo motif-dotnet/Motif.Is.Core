@@ -11,6 +11,6 @@ public static class Claims
         Claim.That(
             subject,
             Comparison.Same(found, claimed),
-            $"to be {Formatter.Show(claimed)}",
+            $"to be {claimed}",
             found: found);
 }

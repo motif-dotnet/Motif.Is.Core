@@ -37,6 +37,7 @@ A claim as it reads after "Expected" in a failure: *to be*, *to throw*.
 
 - **Kind:** domain concept
 - **Status:** proposed
+- **In code:** `Expectation`, which a claim made with `Claim.That` passes as a `$"…"`
 - **See also:** [Failure](#failure)
 
 ## Expected
@@ -63,6 +64,7 @@ What was there instead of what was claimed: the 3 when `count.Is(4)` is false. T
 - **Kind:** domain concept
 - **Status:** proposed
 - **Avoid:** actual, value
+- **In code:** `Found`, a phrase of a claim's own in place of *it's …*
 - **See also:** [Claimed](#claimed)
 
 ## Holds
