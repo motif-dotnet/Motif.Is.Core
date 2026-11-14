@@ -10,7 +10,7 @@ public static class Claims
         [CallerArgumentExpression(nameof(found))] string subject = "") =>
         Claim.That(
             subject,
-            Comparison.Same(found, claimed),
+            new Thing(found).IsSameAs(new Thing(claimed)),
             $"to be {claimed}",
             found: found);
 }

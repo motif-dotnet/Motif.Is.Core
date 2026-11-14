@@ -54,6 +54,7 @@ The message of a false claim: the subject and its expectation, then what was fou
 
 - **Kind:** domain concept
 - **Status:** proposed
+- **In code:** `Failure`, internal, the message of the `Motif.Expected` it's thrown in
 - **Avoid:** error (an error is a spec that breaks, not a claim that's false)
 - **See also:** [Found](#found)
 
@@ -85,7 +86,7 @@ This library: the small, stable core that Motif.Is is built on. Its namespace is
 
 ## Proposition
 
-A claim kept as structure (subject, claim, expectation, what's claimed, whether it holds, and what was found), from which its failure is made. Internal to the core for now.
+A statement that's true or false, as a claim reads in a spec, and as a spec's name reads (decisions 1 and 5). The core has no object for it: it keeps no record of a claim (decision 7).
 
 - **Kind:** domain concept
 - **Status:** proposed
@@ -130,3 +131,14 @@ What a claim is about, as written in the spec: `order.Total`, `order.Place()`. T
 
 - **Kind:** domain concept
 - **Status:** proposed
+- **In code:** `Subject`, internal, which reads in backticks on one line
+
+## Thing
+
+Something claimed or found, whatever it is: a number, a string, a date, a sequence. It knows whether it has items, when it's the same as another, and how it reads in a failure. The name is a placeholder until a better one is agreed.
+
+- **Kind:** domain concept
+- **Status:** proposed
+- **Avoid:** value (4 and 3 are both values)
+- **In code:** `Thing`, internal
+- **See also:** [Claimed](#claimed), [Found](#found)

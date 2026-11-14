@@ -3,9 +3,9 @@ namespace Motif.Is;
 public sealed class Snippet
 {
     private readonly Action run;
-    private readonly string subject;
+    private readonly Subject subject;
 
-    internal Snippet(Action run, string subject)
+    internal Snippet(Action run, Subject subject)
     {
         this.run = run;
         this.subject = subject;
@@ -17,7 +17,7 @@ public sealed class Snippet
     // such as Motif.Is's exact-type claim.
     public TException Throws<TException>() where TException : Exception
     {
-        var expectation = $"to throw {typeof(TException).Name}";
+        Expectation expectation = $"to throw {typeof(TException)}";
 
         try
         {
@@ -30,15 +30,17 @@ public sealed class Snippet
         catch (Exception other)
         {
             throw new Expected(
-                subject,
-                expectation,
-                found: $"it threw {other.GetType().Name}",
+                new Failure(
+                    subject,
+                    expectation,
+                    found: $"it threw {other.GetType()}"),
                 thrown: other);
         }
 
         throw new Expected(
-            subject,
-            expectation,
-            found: "it didn't throw at all");
+            new Failure(
+                subject,
+                expectation,
+                found: $"it didn't throw at all"));
     }
 }

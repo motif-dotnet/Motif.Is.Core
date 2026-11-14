@@ -22,7 +22,7 @@ public readonly struct Found
     public void AppendLiteral(string literal) => text.Append(literal);
 
     public void AppendFormatted<T>(T item) =>
-        text.Append(Formatter.Show(item));
+        text.Append(new Thing(item));
 
     public override string ToString() => $"{text}";
 }

@@ -8,19 +8,13 @@ namespace Motif;
 /// </summary>
 public sealed class Expected : Exception, IAssertionException
 {
-    internal Expected(string subject, string expectation, string found)
-        : base(Sentence(subject, expectation, found))
+    internal Expected(Failure failure)
+        : base($"{failure}")
     {
     }
 
-    internal Expected(
-        string subject, string expectation, string found, Exception thrown)
-        : base(Sentence(subject, expectation, found), thrown)
+    internal Expected(Failure failure, Exception thrown)
+        : base($"{failure}", thrown)
     {
     }
-
-    private static string Sentence(
-        string subject, string expectation, string found) =>
-        $"{Subject.InFailure(subject)} {expectation}\nbut {found}" +
-        (found.EndsWith('.') ? "" : ".");
 }
