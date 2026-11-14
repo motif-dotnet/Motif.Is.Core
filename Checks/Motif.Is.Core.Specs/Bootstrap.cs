@@ -18,7 +18,7 @@ public sealed class A_claim_that_is_false
     }
 }
 
-public sealed class Code_claimed_to_throw_that_throws
+public sealed class A_snippet_claimed_to_throw_that_throws
 {
     [Fact]
     public void hands_back_what_it_threw()

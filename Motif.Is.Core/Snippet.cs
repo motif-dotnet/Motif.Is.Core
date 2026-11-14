@@ -1,13 +1,13 @@
 namespace Motif.Is;
 
-public sealed class Code
+public sealed class Snippet
 {
-    private readonly Action code;
+    private readonly Action run;
     private readonly string subject;
 
-    internal Code(Action code, string subject)
+    internal Snippet(Action run, string subject)
     {
-        this.code = code;
+        this.run = run;
         this.subject = subject;
     }
 
@@ -15,7 +15,7 @@ public sealed class Code
     {
         try
         {
-            code();
+            run();
         }
         catch (TException exception)
         {
@@ -23,6 +23,8 @@ public sealed class Code
         }
 
         throw new Expected(
-            subject, $"to throw {typeof(TException).Name}", "it threw nothing");
+            subject,
+            expectation: $"to throw {typeof(TException).Name}",
+            found: "it threw nothing");
     }
 }

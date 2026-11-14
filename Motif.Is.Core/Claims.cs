@@ -10,6 +10,9 @@ public static class Claims
         [CallerArgumentExpression(nameof(found))] string subject = "")
     {
         if (!Equals(found, claimed))
-            throw new Expected(subject, $"to be {claimed}", $"it's {found}");
+            throw new Expected(
+                subject,
+                expectation: $"to be {claimed}",
+                found: $"it's {found}");
     }
 }

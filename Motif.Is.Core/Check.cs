@@ -4,8 +4,8 @@ namespace Motif.Is;
 
 public static class Check
 {
-    public static Code That(
-        Action code,
-        [CallerArgumentExpression(nameof(code))] string subject = "") =>
-        new(code, subject.Replace("() => ", ""));
+    public static Snippet That(
+        Action snippet,
+        [CallerArgumentExpression(nameof(snippet))] string subject = "") =>
+        new(snippet, subject.Replace("() => ", ""));
 }

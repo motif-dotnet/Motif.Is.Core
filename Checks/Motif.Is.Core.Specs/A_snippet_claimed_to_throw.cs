@@ -1,4 +1,4 @@
-namespace Code_claimed_to_throw;
+namespace A_snippet_claimed_to_throw;
 
 public sealed class that_does_not_throw
 {

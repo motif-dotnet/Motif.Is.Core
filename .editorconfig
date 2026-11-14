@@ -4,6 +4,10 @@ root = true
 # Aim for 80; go over only when breaking the line reads worse. CI fails past 100.
 max_line_length = 100
 
+# Namespaces don't follow folders, on purpose: Expected is Motif.Expected
+# (decision 2), and spec namespaces start their propositions (decision 5).
+dotnet_diagnostic.IDE0130.severity = none
+
 dotnet_naming_rule.interfaces_no_prefix.symbols = interfaces
 dotnet_naming_rule.interfaces_no_prefix.style = pascal_case
 dotnet_naming_rule.interfaces_no_prefix.severity = warning
@@ -13,7 +17,7 @@ dotnet_naming_symbols.interfaces.applicable_accessibilities = *
 
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 
-# Spec names read as propositions (A_claim.that_is_false.throws_Expected),
-# so spec classes have lower-case names like "holds", which CS8981 warns about.
+# Spec names read as propositions across namespace, class and method, so
+# spec classes have lower-case names, which CS8981 warns about.
 [Checks/**.cs]
 dotnet_diagnostic.CS8981.severity = none

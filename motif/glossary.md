@@ -14,7 +14,7 @@ One of the few specs written with AwesomeAssertions rather than the core, in the
 
 ## Claim
 
-What a spec states about a subject: that it is something, or that code throws an exception. A claim either holds or is false. `Is` is an extension on the subject; claims about code go through `Check.That`. New claims are made with `Claim.That`.
+What a spec states about a subject: that it is something, or that a snippet throws an exception. A claim either holds or is false. `Is` is an extension on the subject; claims about snippets go through `Check.That`. New claims are made with `Claim.That`.
 
 - **Kind:** domain concept
 - **Status:** proposed
@@ -30,15 +30,6 @@ What a claim says the subject is: the 4 in `count.Is(4)`.
 - **Status:** proposed
 - **Avoid:** value (4 and 3 are both values), expected value, expected (that's the exception)
 - **See also:** [Found](#found)
-
-## Code
-
-Code that a spec makes a claim about, given to `Check.That` as a lambda: `Check.That(() => order.Place())`.
-
-- **Kind:** domain concept
-- **Status:** proposed
-- **Avoid:** action (it's an `Action` in C#, but not in prose)
-- **In code:** `Check.That`
 
 ## Expectation
 
@@ -105,6 +96,15 @@ Said of the core's own specs: they're written in the core, apart from the bootst
 - **Kind:** domain concept
 - **Status:** proposed
 - **See also:** [Bootstrap spec](#bootstrap-spec)
+
+## Snippet
+
+A piece of code that a spec makes a claim about, given to `Check.That` as a lambda: `Check.That(() => order.Place())`.
+
+- **Kind:** domain concept
+- **Status:** proposed
+- **Avoid:** code (everything here is code), action (it's an `Action` in C#, but not in prose)
+- **In code:** `Check.That`, which returns a `Snippet`
 
 ## Spec
 
