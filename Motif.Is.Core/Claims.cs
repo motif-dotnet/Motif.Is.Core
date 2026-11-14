@@ -34,6 +34,9 @@ public static class Claims
         null => "null",
         bool b => b ? "true" : "false",
         decimal d => d.ToString(CultureInfo.InvariantCulture),
+        string s => s,
+        IEnumerable items =>
+            $"[{string.Join(", ", items.Cast<object?>().Select(Show))}]",
         _ => $"{item}",
     };
 }

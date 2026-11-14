@@ -13,6 +13,14 @@ public sealed class Is
 
         count.Is(4);
     }
+
+    [Fact]
+    public void when_sequences_differ()
+    {
+        List<int>[] rows = [[1, 2], [3]];
+
+        rows.Is([[1, 2], [4]]);
+    }
 }
 
 [Trait("Kind", "FailureGallery")]
