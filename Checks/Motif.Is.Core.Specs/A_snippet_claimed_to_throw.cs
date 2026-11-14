@@ -32,6 +32,23 @@ public sealed class with_a_lambda_inside
     }
 }
 
+public sealed class over_several_lines
+{
+    [Fact]
+    public void appears_in_the_failure_on_one_line()
+    {
+        var count = 3;
+        var incrementing = Check.That(() =>
+            count++);
+
+        Check.That(() => incrementing.Throws<OverflowException>())
+            .Throws<Expected>()
+            .Message.Is(
+                "`count++` to throw OverflowException\n" +
+                "but it didn't throw at all.");
+    }
+}
+
 public sealed class that_throws_something_else
 {
     [Fact]
