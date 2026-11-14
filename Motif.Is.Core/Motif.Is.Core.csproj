@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Motif.Is</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Package metadata. Released to Motif's own repos through a local feed, not nuget.org (decision 16). -->
+  <PropertyGroup>
+    <PackageId>Motif.Is.Core</PackageId>
+    <Version>0.1.0-alpha.1</Version>
+    <Authors>John Page</Authors>
+    <Description>The small, stable core of Motif.Is: specs state facts, order.Total.Is(11.25m). From the Motif.NET suite.</Description>
+    <PackageTags>assertions;specs;testing;propositions</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/motif-dotnet/Motif.Is.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/motif-dotnet/Motif.Is.Core</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

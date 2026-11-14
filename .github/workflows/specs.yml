@@ -1,0 +1,22 @@
+# Runs the specs on every push and pull request. The failure gallery fails on purpose, so it's left out.
+name: Specs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  specs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Specs
+        run: dotnet test Motif.Is.Core.slnx -c Release --filter "Kind!=FailureGallery"

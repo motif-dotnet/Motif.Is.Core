@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Checks/">
+    <Project Path="Checks/Motif.Is.Core.Specs/Motif.Is.Core.Specs.csproj" />
+  </Folder>
+  <Project Path="Motif.Is.Core/Motif.Is.Core.csproj" />
+</Solution>
