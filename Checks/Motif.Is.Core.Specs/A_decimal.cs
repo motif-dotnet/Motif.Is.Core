@@ -4,22 +4,24 @@ namespace A_decimal;
 
 public sealed class in_a_failure
 {
-    [Fact]
-    public void reads_as_written_in_any_culture()
+    [Theory]
+    [InlineData("fr-FR")] // writes a comma for the decimal point
+    [InlineData("sv-SE")] // and also a minus sign, not a hyphen
+    public void reads_as_written_in_any_culture(string culture)
     {
-        var total = 12.50m;
-        var culture = CultureInfo.CurrentCulture;
-        CultureInfo.CurrentCulture = new CultureInfo("fr-FR");
+        var total = -12.50m;
+        var current = CultureInfo.CurrentCulture;
+        CultureInfo.CurrentCulture = new CultureInfo(culture);
 
         try
         {
             Check.That(() => total.Is(3.00m))
                 .Throws<Expected>()
-                .Message.Is("`total` to be 3.00\nbut it's 12.50.");
+                .Message.Is("`total` to be 3.00\nbut it's -12.50.");
         }
         finally
         {
-            CultureInfo.CurrentCulture = culture;
+            CultureInfo.CurrentCulture = current;
         }
     }
 }
