@@ -7,5 +7,5 @@ public static class Check
     public static Snippet That(
         Action snippet,
         [CallerArgumentExpression(nameof(snippet))] string subject = "") =>
-        new(snippet, subject.Replace("() => ", ""));
+        new(snippet, subject.StartsWith("() => ") ? subject[6..] : subject);
 }
