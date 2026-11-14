@@ -6,5 +6,5 @@ Rules for anyone working on the Motif.Is.Core repo, on top of the [README](READM
   2. If the code they call doesn't exist yet, add just enough to build, with no behaviour.
   3. The owner reviews them in the codebase, as call-site examples, and sees them fail, for the right reason: with a failure that reads well, not some other exception. Add a spec to the failure gallery for each new kind of failure.
   4. Make them pass with the narrowest code that does, without changing them. If a spec seems wrong, take it back to the owner. If a new spec would pass without new code, the code had already gone further than its specs.
-- The spec names are the list of what the code does. Read together, they should say it; if they don't, a spec is missing or misnamed.
+- The spec names are the list of what the code does. Read together, they should say it; if they don't, a spec is missing or misnamed. There's no behaviour checklist: the spec names stand in for it, wherever a role mentions one.
 - Keep the public API to what [decisions.md](../decisions.md) agrees. A new public type or member needs a decision first: adding later is safe, taking away isn't.
