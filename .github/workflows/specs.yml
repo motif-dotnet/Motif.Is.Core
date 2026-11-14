@@ -18,5 +18,9 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
+      - name: Lines of at most 100 columns
+        run: |
+          long=$(git ls-files '*.cs' | xargs awk 'length > 100 { print FILENAME ":" FNR }')
+          if [ -n "$long" ]; then echo "$long"; exit 1; fi
       - name: Specs
         run: dotnet test Motif.Is.Core.slnx -c Release --filter "Kind!=FailureGallery"

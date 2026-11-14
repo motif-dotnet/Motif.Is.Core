@@ -1,4 +1,4 @@
-namespace A_value;
+namespace A_subject;
 
 public sealed class claimed_to_be_what_it_is
 {

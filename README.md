@@ -17,9 +17,9 @@ but it's 7.00.
 The core has two claims, `Is` and `Throws`, and one way to make your own, which they use too:
 
 ```csharp
-public static void IsTrue(this bool value,
-    [CallerArgumentExpression(nameof(value))] string subject = "")
-    => Claim.That(subject, holds: value, expectation: "to be true", value: value);
+public static void IsTrue(this bool found,
+    [CallerArgumentExpression(nameof(found))] string subject = "")
+    => Claim.That(subject, holds: found, expectation: "to be true", found: found);
 ```
 
 Motif.Is builds its other claims on the core in that way. Specs say `using Motif.Is;` whichever of the two they use.

@@ -14,13 +14,22 @@ One of the few specs written with AwesomeAssertions rather than the core, in the
 
 ## Claim
 
-What a spec states about a subject: that it is a value, or that code throws an exception. A claim either holds or is false. Claims about values are extensions on the value; claims about code go through `Check.That`. New claims are made with `Claim.That`.
+What a spec states about a subject: that it is something, or that code throws an exception. A claim either holds or is false. `Is` is an extension on the subject; claims about code go through `Check.That`. New claims are made with `Claim.That`.
 
 - **Kind:** domain concept
 - **Status:** proposed
 - **Avoid:** assertion (except when comparing with other libraries), should
 - **In code:** `Claim.That`
 - **See also:** [Subject](#subject)
+
+## Claimed
+
+What a claim says the subject is: the 4 in `count.Is(4)`.
+
+- **Kind:** domain concept
+- **Status:** proposed
+- **Avoid:** value (4 and 3 are both values), expected value, expected (that's the exception)
+- **See also:** [Found](#found)
 
 ## Code
 
@@ -58,10 +67,12 @@ The message of a false claim: the subject and its expectation, then what was fou
 
 ## Found
 
-What was there instead of what was claimed, as a phrase that follows "but": *it's 7.00*, *it threw nothing*.
+What was there instead of what was claimed: the 3 when `count.Is(4)` is false. The failure says it after "but": *but it's 3*, *but it threw nothing*.
 
 - **Kind:** domain concept
 - **Status:** proposed
+- **Avoid:** actual, value
+- **See also:** [Claimed](#claimed)
 - **Avoid:** actual
 
 ## Holds
@@ -82,7 +93,7 @@ This library: the small, stable core that Motif.Is is built on. Its namespace is
 
 ## Proposition
 
-A claim kept as structure (subject, claim, expectation, value, whether it holds, and what was found), from which its failure is made. Internal to the core for now.
+A claim kept as structure (subject, claim, expectation, what's claimed, whether it holds, and what was found), from which its failure is made. Internal to the core for now.
 
 - **Kind:** domain concept
 - **Status:** proposed
@@ -110,11 +121,3 @@ What a claim is about, as written in the spec: `order.Total`, `order.Place()`. T
 
 - **Kind:** domain concept
 - **Status:** proposed
-
-## Value
-
-The claim's object, shown as text: the 11.25 in "is 11.25".
-
-- **Kind:** domain concept
-- **Status:** proposed
-- **Avoid:** expected value
