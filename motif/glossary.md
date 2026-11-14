@@ -2,7 +2,7 @@
 
 The words this project uses, and what they mean. People and agents use these terms in code, docs, issues and discussion, and avoid the words listed under **Avoid**. A new concept gets an entry, marked *proposed*, in the same change that introduces it. An entry with no status is agreed.
 
-The format is described in the [Motif Glossary design note](https://github.com/motif-dotnet/.github/blob/main/design/glossary.md). Motif.Is.Core is a library with no sketch, so no entry has a **Sketch** field, and almost every term is a *domain concept*. The terms come from [Motif.Is](https://github.com/motif-dotnet/Motif.Is)'s glossary, and are all *proposed* here until the code uses them.
+The format is described in the [Motif Glossary design note](https://github.com/motif-dotnet/.github/blob/main/design/glossary.md). Motif.Is.Core is a library with no sketch, so no entry has a **Sketch** field, and almost every term is a *domain concept*. The terms come from [Motif.Is](https://github.com/motif-dotnet/Motif.Is)'s glossary, and are all *proposed* here until they're agreed ([#3](https://github.com/motif-dotnet/Motif.Is.Core/issues/3)).
 
 ## Bootstrap spec
 
@@ -64,7 +64,6 @@ What was there instead of what was claimed: the 3 when `count.Is(4)` is false. T
 - **Status:** proposed
 - **Avoid:** actual, value
 - **See also:** [Claimed](#claimed)
-- **Avoid:** actual
 
 ## Holds
 
