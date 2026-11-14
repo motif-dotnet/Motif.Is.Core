@@ -1,11 +1,12 @@
 using AwesomeAssertions;
 
-namespace A_claim;
+// Bootstrap specs use AwesomeAssertions, not the core, because every other
+// spec relies on what they prove.
+
+namespace Bootstrap.A_claim;
 
 public sealed class that_is_false
 {
-    // BOOTSTRAP: AwesomeAssertions, not the core, because every other spec
-    // relies on a false claim throwing.
     [Fact]
     public void throws_Expected()
     {

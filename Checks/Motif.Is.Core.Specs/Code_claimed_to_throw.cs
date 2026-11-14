@@ -1,22 +1,4 @@
-using AwesomeAssertions;
-
 namespace Code_claimed_to_throw;
-
-public sealed class that_throws
-{
-    // BOOTSTRAP: AwesomeAssertions, not the core, because every spec of a
-    // false claim relies on Throws catching.
-    [Fact]
-    public void hands_back_what_it_threw()
-    {
-        var exception = new InvalidOperationException();
-
-        var handedBack =
-            Check.That(() => throw exception).Throws<InvalidOperationException>();
-
-        handedBack.Should().BeSameAs(exception);
-    }
-}
 
 public sealed class that_does_not_throw
 {
