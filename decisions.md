@@ -24,4 +24,5 @@ Motif.Is.Core is the small, stable core of [Motif.Is](https://github.com/motif-d
 ## Later
 
 - **Checking by the previous release**: spec the core with its own last release under an extern alias, as a compiler is built by its previous release ([Motif.Is#1](https://github.com/motif-dotnet/Motif.Is/issues/1)), after the first release.
+- **Async snippets**: `Throws` for a snippet that returns a task, which needs its own `Check.That` and an awaitable `Throws`, as new public API ([Motif.Is#5](https://github.com/motif-dotnet/Motif.Is/issues/5)). Until then an `async` lambda passed to `Check.That` compiles as `async void`, which `Throws` can't catch.
 - **Long sequences in failures**: how they print, once one comes up. Consider then putting the subject on the first line and lining up *to be* and *but it's*, so what was claimed and what was found are easy to compare when they're long. Short ones keep the sentence. Lining the second line up with the first isn't possible, because each test runner adds its own prefix to the first line.
