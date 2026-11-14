@@ -3,9 +3,22 @@ using AwesomeAssertions;
 // Bootstrap specs use AwesomeAssertions, not the core, because every other
 // spec relies on what they prove.
 
-namespace Bootstrap.Code_claimed_to_throw;
+namespace Bootstrap;
 
-public sealed class that_throws
+public sealed class A_claim_that_is_false
+{
+    [Fact]
+    public void throws_Expected()
+    {
+        var count = 3;
+
+        var claim = () => count.Is(4);
+
+        claim.Should().Throw<Expected>();
+    }
+}
+
+public sealed class Code_claimed_to_throw_that_throws
 {
     [Fact]
     public void hands_back_what_it_threw()
