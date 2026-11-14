@@ -3,11 +3,19 @@ namespace A_sequence;
 public sealed class claimed_to_have_the_same_items
 {
     [Fact]
+    public void holds()
+    {
+        List<int> counts = [3, 4];
+
+        counts.Is([3, 4]);
+    }
+
+    [Fact]
     public void holds_whatever_the_collection_types()
     {
         IEnumerable<int> counts = new List<int> { 3, 4 };
 
-        counts.Is([3, 4]);
+        counts.Is(new[] { 3, 4 });
     }
 }
 
