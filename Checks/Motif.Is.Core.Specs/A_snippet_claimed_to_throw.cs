@@ -22,12 +22,12 @@ public sealed class with_a_lambda_inside
     public void appears_in_the_failure_as_written()
     {
         var count = 3;
-        var incrementing = Check.That(() => Task.Run(() => count++).Wait());
+        var incrementing = Check.That(() => Parallel.Invoke(() => count++));
 
         Check.That(() => incrementing.Throws<OverflowException>())
             .Throws<Expected>()
             .Message.Is(
-                "`Task.Run(() => count++).Wait()` to throw OverflowException\n" +
+                "`Parallel.Invoke(() => count++)` to throw OverflowException\n" +
                 "but it didn't throw at all.");
     }
 }
