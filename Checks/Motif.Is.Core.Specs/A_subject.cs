@@ -11,6 +11,17 @@ public sealed class claimed_to_be_what_it_is
     }
 }
 
+public sealed class claimed_to_be_null
+{
+    [Fact]
+    public void holds_when_it_is()
+    {
+        int? discount = null;
+
+        discount.Is(null);
+    }
+}
+
 public sealed class claimed_to_be_something_else
 {
     [Theory]

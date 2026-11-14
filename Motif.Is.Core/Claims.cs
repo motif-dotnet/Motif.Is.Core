@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 namespace Motif.Is;
@@ -12,7 +13,15 @@ public static class Claims
         if (!Equals(found, claimed))
             throw new Expected(
                 subject,
-                expectation: $"to be {claimed}",
-                found: $"it's {found}");
+                expectation: $"to be {Show(claimed)}",
+                found: $"it's {Show(found)}");
     }
+
+    private static string Show(object? item) => item switch
+    {
+        null => "null",
+        bool b => b ? "true" : "false",
+        decimal d => d.ToString(CultureInfo.InvariantCulture),
+        _ => $"{item}",
+    };
 }
